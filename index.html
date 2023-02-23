@@ -1,35 +1,24 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html>
+
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>My Webpage</title>
     <link rel="stylesheet" href="style.css">
-    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.0.0-rc.5/dist/html2canvas.min.js"></script>
-    <title>Ancient Memes</title>
 </head>
+
 <body>
-    <h1>Ancient Memes...</h1>
-    <ul>
-        <li>First crop Image</li>
-            <ul>
-                <li>x: <input type="range" id="zoomx" min="0" max="1280" step="1" value="300" /></li>
-                <li>y: <input type="range" id="zoomy" min="0" max="720" step="1" value="100" /></li>
-            </ul>
-        <li>Second resize Image</li>
-            <ul>
-                <li>x: <input type="range" id="posx" min="0" max="100" step="1" value="50" /></li>
-                <li>y: <input type="range" id="posy" min="0" max="100" step="1" value="50" /></li>
-                <li>zoom: <input type="range" id="zoom" min="0.1" max="1" step="0.01" value="1" /></li>
-            </ul>
-      <li><input type="button" value="play/pause" onclick="togglePlay()"> 	&nbsp; 	&nbsp; 	&nbsp; 	&nbsp; 	&nbsp; 	&nbsp;<input type="button" value="submit to Gallery!" onclick="submit()"></li>
-      </ul> 
-    <div id="preview">
-        <div class="stage">
-            <video id="video" autoplay></video>
-        </div>
-        <img src="images/beethoven.jpg" alt="">
+    <button class="settings" onclick="toggleAnchors()">Toogle Anchors</button>
+    <div id="canvas">
+        <video id="video" autoplay></video>
+        <div id="scaleAnchor" class="Anchor"></div>
+        <div id="topAnchor" class="Anchor"></div>
+        <div id="bottomAnchor" class="Anchor"></div>
+        <div id="leftAnchor" class="Anchor"></div>
+        <div id="rightAnchor" class="Anchor"></div>
     </div>
-    <div id="out"></div>
-<script src="script.js"></script>
+
+    <script src="script.js"></script>
 </body>
+
 </html>
