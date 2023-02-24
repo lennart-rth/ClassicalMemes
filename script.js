@@ -4,6 +4,7 @@ const topAnchor = document.getElementById('topAnchor');
 const bottomAnchor = document.getElementById('bottomAnchor');
 const leftAnchor = document.getElementById('leftAnchor');
 const rightAnchor = document.getElementById('rightAnchor');
+const borderRadiusSlider = document.getElementById('borderRadius');
 
 var videoX;
 var videoY;
@@ -25,12 +26,16 @@ var trimBottom = 0;
 var trimLeft = 0;
 var trimRight = 0;
 
+var borderRadius = 0;
+
 video.onmousedown = initVideoMove;
 scaleAnchor.onmousedown = initVideoMove;
 topAnchor.onmousedown = initVideoMove;
 bottomAnchor.onmousedown = initVideoMove;
 leftAnchor.onmousedown = initVideoMove;
 rightAnchor.onmousedown = initVideoMove;
+
+borderRadiusSlider.oninput = updateBorder;
 
 
 function initVideoMove(e) {
@@ -140,7 +145,7 @@ function videoRightTrim(e){
 
   const diffX = mouseX - e.clientX;
   if (tempX + diffX < 0){trimRight = 0;}else{trimRight = tempX + diffX;};
-  
+
   updateAnchors();
 }
 
@@ -148,6 +153,12 @@ function closeVideoDrag() {
     document.onmouseup = null;
     document.onmousemove = null;
   }
+
+function updateBorder() {
+  borderRadius = this.value;
+
+  updateVideoPosition();
+}
 
   if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
     navigator.mediaDevices.getUserMedia({ video: true })
@@ -165,6 +176,7 @@ function closeVideoDrag() {
     videoY = 200;
     videoW = video.videoWidth/2;
     videoH = video.videoHeight/2;
+    borderRadius = 20;
     updateVideoPosition();
   };
 
@@ -198,7 +210,7 @@ function updateAnchors(){
     const midX = leftX+(Math.abs(leftX-rightX)/2);
     const midY = topY+(Math.abs(topY-bottomY)/2);
 
-    video.style.clipPath = `inset(${trimTop}px ${trimRight}px ${trimBottom}px ${trimLeft}px)`;
+    video.style.clipPath = `inset(${trimTop}px ${trimRight}px ${trimBottom}px ${trimLeft}px round ${borderRadius}px)`;
     
     updatePosition(scaleAnchor,rightX,topY,10,10);
     updatePosition(topAnchor,midX,topY,10,10);

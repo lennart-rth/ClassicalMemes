@@ -1,7 +1,71 @@
+html, body {
+    margin: 0;
+    overflow: hidden ;
+}
+
+#background {
+    position: absolute;
+    width: 110%;
+    height: auto;
+    top: -125px;
+    left: -90px
+}
+
+#painting {
+    position: absolute;
+    top: 275px;
+    left: 627px;
+    width: 168px;
+    height: auto;
+}
+
+/* Settings div */
+
+.settings {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    border-width: 0;
+}
+
+table,
+th,
+td {
+    border: 0px solid white;
+    border-collapse: collapse;
+    /* display:flex; */
+    text-align: center;
+    /* horizontal centering */
+    vertical-align: middle;
+    /* vertical centering */
+
+}
+
+th {
+    background-color: #525252;
+}
+
+tr:nth-child(odd) {
+    background-color: #919191;
+    border-width: 0;
+}
+
+tr:nth-child(even) {
+    background-color: #bfbfbf;
+    border-width: 0;
+}
+
+#slider {
+    display: flex;
+    text-align: center;
+    /* horizontal centering */
+}
+
+/* Webcam Video */
+
 #video {
     position: absolute;
-    background-color: grey;
-    cursor: move;    
+    cursor: move;
 }
 
 .Anchor {
@@ -17,16 +81,19 @@
 #scaleAnchor {
     cursor: nesw-resize;
 }
+
 #topAnchor {
     cursor: s-resize;
 }
+
 #bottomAnchor {
     cursor: n-resize;
 }
+
 #leftAnchor {
     cursor: e-resize;
 }
+
 #rightAnchor {
     cursor: w-resize;
 }
-

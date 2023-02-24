@@ -3,12 +3,33 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>My Webpage</title>
+    <title>AncientMeme</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <button class="settings" onclick="toggleAnchors()">Toogle Anchors</button>
+    <img id="background" src="images/backdrop.jpg">
+    <img id="painting" src="images/Antoinette.jpg">
+    <div class="settings">
+        <table>
+            <tr>
+                <th>Settings</th>
+            </tr>
+            <tr>
+                <td>
+                    <button onclick="toggleAnchors()">Toogle Anchors</button>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span id="slider">
+                        <label for="borderRadius">Radius:</label>
+                        <input id="borderRadius" type="range" min="0" max="100" value="20">
+                    </span>
+                </td>
+            </tr>
+        </table>  
+    </div>
     <div id="canvas">
         <video id="video" autoplay></video>
         <div id="scaleAnchor" class="Anchor"></div>
