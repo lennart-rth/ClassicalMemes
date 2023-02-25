@@ -35,7 +35,7 @@ var greyScale = 0;
 
 const paintings = ["antoinette.jpg", "bach.jpg", "beethoven.jpg", "franklin.jpg", "napoleon.jpg", "tesla.jpg"];
 var paintingsIndex = 0;
-backgroundImage.style.backgroundImage = `url(images/${paintings[paintingsIndex]}), url(images/bach.jpg)`;
+backgroundImage.style.backgroundImage = `url(images/${paintings[paintingsIndex]}), url(images/antoinette.jpg)`;
 
 video.onmousedown = initVideoMove;
 scaleAnchor.onmousedown = initVideoMove;
