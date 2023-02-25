@@ -5,6 +5,10 @@ const bottomAnchor = document.getElementById('bottomAnchor');
 const leftAnchor = document.getElementById('leftAnchor');
 const rightAnchor = document.getElementById('rightAnchor');
 const borderRadiusSlider = document.getElementById('borderRadius');
+const backgroundImage = document.getElementById('background');
+const curtainLeft = document.getElementById("curtainLeft");
+const brightnessSlider = document.getElementById('brightness');
+const curtainRight = document.getElementById("curtainRight");
 
 var videoX;
 var videoY;
@@ -27,6 +31,11 @@ var trimLeft = 0;
 var trimRight = 0;
 
 var borderRadius = 0;
+var greyScale = 0;
+
+const paintings = ["antoinette.jpg", "bach.jpg", "beethoven.jpg", "franklin.jpg", "napoleon.jpg", "tesla.jpg"];
+var paintingsIndex = 0;
+backgroundImage.style.backgroundImage = `url(images/${paintings[paintingsIndex]}), url(images/bach.jpg)`;
 
 video.onmousedown = initVideoMove;
 scaleAnchor.onmousedown = initVideoMove;
@@ -36,6 +45,7 @@ leftAnchor.onmousedown = initVideoMove;
 rightAnchor.onmousedown = initVideoMove;
 
 borderRadiusSlider.oninput = updateBorder;
+brightnessSlider.oninput = changeBrightness;
 
 
 function initVideoMove(e) {
@@ -160,6 +170,81 @@ function updateBorder() {
   updateVideoPosition();
 }
 
+async function changePaintingLeft() {
+  if (paintingsIndex > 0) {
+    paintingsIndex -= 1
+    closeCurtain();
+  await Sleep(1050);
+  backgroundImage.style.backgroundImage = `url(images/${paintings[paintingsIndex]}), url(images/bach.jpg)`;
+  await Sleep(150);
+  openCurtain();
+  }
+}
+
+async function changePaintingRight() {
+  if (paintingsIndex+1 < paintings.length) {
+    paintingsIndex += 1
+    closeCurtain();
+  await Sleep(1050);
+  backgroundImage.style.backgroundImage = `url(images/${paintings[paintingsIndex]}), url(images/bach.jpg)`;
+  await Sleep(150);
+  openCurtain();
+  }
+}
+
+function closeCurtain() {
+  var id = null;
+  var posL = -1300;
+  var posR = 1530;
+  clearInterval(id);
+  id = setInterval(move, 10);
+
+  function move() {
+    if (posL == -500) {
+      clearInterval(id);
+    } else {
+      posL+=10;
+      posR-=10;
+      curtainLeft.style.left = posL + 'px';
+      curtainRight.style.left = posR + 'px';
+    }
+  }
+} 
+
+function openCurtain() {
+  var id = null;
+  var posL = -500;
+  var posR = 730;
+  clearInterval(id);
+  id = setInterval(move, 10);
+
+  function move() {
+    if (posL == -1300) {
+      clearInterval(id);
+    } else {
+      posL-=10;
+      posR+=10;
+      curtainLeft.style.left = posL + 'px';
+      curtainRight.style.left = posR + 'px';
+    }
+  }
+}
+
+function setGreyScale() {
+  console.log(greyScale)
+  if (greyScale == 0){
+    video.style.filter= `grayscale(100%)`;
+    greyScale = 100;
+  }else{
+    video.style.filter= `grayscale(0%)`;
+    greyScale = 0;
+  }
+}
+
+function changeBrightness() {
+  video.style.filter= `brightness(${this.value/10})`;
+}
+
   if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
     navigator.mediaDevices.getUserMedia({ video: true })
       .then(function (stream) {
@@ -172,10 +257,11 @@ function updateBorder() {
   }
 
   function onWebcamLoaded() {
-    videoX = 200;
-    videoY = 200;
     videoW = video.videoWidth/2;
     videoH = video.videoHeight/2;
+    videoX = 10;
+    videoY = 10;
+    
     borderRadius = 20;
     updateVideoPosition();
   };
@@ -211,12 +297,14 @@ function updateAnchors(){
     const midY = topY+(Math.abs(topY-bottomY)/2);
 
     video.style.clipPath = `inset(${trimTop}px ${trimRight}px ${trimBottom}px ${trimLeft}px round ${borderRadius}px)`;
+
+    AnchorX = (10/video.videoWidth)*videoW+5
     
-    updatePosition(scaleAnchor,rightX,topY,10,10);
-    updatePosition(topAnchor,midX,topY,10,10);
-    updatePosition(bottomAnchor,midX,bottomY,10,10);
-    updatePosition(leftAnchor,leftX,midY,10,10);
-    updatePosition(rightAnchor,rightX,midY,10,10);
+    updatePosition(scaleAnchor,rightX,topY,AnchorX,AnchorX);
+    updatePosition(topAnchor,midX,topY,AnchorX,AnchorX);
+    updatePosition(bottomAnchor,midX,bottomY,AnchorX,AnchorX);
+    updatePosition(leftAnchor,leftX,midY,AnchorX,AnchorX);
+    updatePosition(rightAnchor,rightX,midY,AnchorX,AnchorX);
 }
 
 function updatePosition(element,x,y,w,h){
@@ -225,3 +313,7 @@ function updatePosition(element,x,y,w,h){
   element.style.width = w + "px";
   element.style.height = h + "px";
 }
+
+function Sleep(milliseconds) {
+  return new Promise(resolve => setTimeout(resolve, milliseconds));
+ }

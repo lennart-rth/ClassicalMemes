@@ -5,16 +5,17 @@
     <meta charset="UTF-8">
     <title>AncientMeme</title>
     <link rel="stylesheet" href="style.css">
-</head>
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css" rel="stylesheet"  type='text/css'></head>
 
 <body>
-    <img id="background" src="images/backdrop.jpg">
-    <img id="painting" src="images/Antoinette.jpg">
+    <img id="curtainLeft" src="images/curtain.png">
+    <img id="curtainRight" src="images/curtain.png">
+    <div id="background"></div>
     <div class="settings">
         <table>
-            <tr>
+            <!-- <tr>
                 <th>Settings</th>
-            </tr>
+            </tr> -->
             <tr>
                 <td>
                     <button onclick="toggleAnchors()">Toogle Anchors</button>
@@ -23,12 +24,26 @@
             <tr>
                 <td>
                     <span id="slider">
-                        <label for="borderRadius">Radius:</label>
+                        <!-- <label for="borderRadius">Radius:</label> -->
                         <input id="borderRadius" type="range" min="0" max="100" value="20">
                     </span>
                 </td>
             </tr>
+            <tr>
+                <td>
+                    <button onclick="setGreyScale()">Set Grayscale</button>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span id="slider">
+                        <input id="brightness" type="range" min="0" max="50" value="10">
+                    </span>
+                </td>
+            </tr>
         </table>  
+        <!-- <button onclick="toggleAnchors()">Toogle Anchors</button>
+        <input id="borderRadius" type="range" min="0" max="100" value="20"> -->
     </div>
     <div id="canvas">
         <video id="video" autoplay></video>
@@ -38,7 +53,11 @@
         <div id="leftAnchor" class="Anchor"></div>
         <div id="rightAnchor" class="Anchor"></div>
     </div>
+    <i class="fa fa-caret-left" onclick="changePaintingLeft()"></i>
+    <i class="fa fa-caret-right" onclick="changePaintingRight()"></i>
 
+    
+    
     <script src="script.js"></script>
 </body>
 

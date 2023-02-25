@@ -1,31 +1,23 @@
 html, body {
     margin: 0;
-    overflow: hidden ;
+    overflow: hidden;
 }
 
 #background {
-    position: absolute;
-    width: 110%;
-    height: auto;
-    top: -125px;
-    left: -90px
+    background-image: url(images/bach.jpg), url(images/bach.jpg);
+    height: 100vh;
+    width: auto;
+    background-position: center;
+    background-size: cover;
+    z-index: 0
 }
-
-#painting {
-    position: absolute;
-    top: 275px;
-    left: 627px;
-    width: 168px;
-    height: auto;
-}
-
-/* Settings div */
 
 .settings {
     position: absolute;
-    bottom: 0;
-    right: 0;
-    border-width: 0;
+    border-width: 0px;
+    top: 70%;
+    left: 72.3%;
+    z-index: 1;
 }
 
 table,
@@ -33,35 +25,41 @@ th,
 td {
     border: 0px solid white;
     border-collapse: collapse;
-    /* display:flex; */
     text-align: center;
-    /* horizontal centering */
     vertical-align: middle;
-    /* vertical centering */
-
 }
 
-th {
-    background-color: #525252;
-}
-
-tr:nth-child(odd) {
-    background-color: #919191;
-    border-width: 0;
-}
-
-tr:nth-child(even) {
-    background-color: #bfbfbf;
-    border-width: 0;
+table{
+    transform: rotateX(35deg) skew(-6deg);
 }
 
 #slider {
     display: flex;
     text-align: center;
-    /* horizontal centering */
+    transform: scale(0.5);
 }
 
-/* Webcam Video */
+button {
+    color: #000000;
+} 
+
+input {
+    -webkit-appearance: none;
+    appearance: none;
+    background: transparent;
+    cursor: pointer;
+    width: 15rem;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+    background: #053a5f;
+    height: 0.5rem;
+  }
+  
+input[type="range"]::-moz-range-track {
+    background: #053a5f;
+    height: 0.5rem;
+  }
 
 #video {
     position: absolute;
@@ -97,3 +95,54 @@ tr:nth-child(even) {
 #rightAnchor {
     cursor: w-resize;
 }
+
+.navigation {
+    position: absolute;
+    top: 92%;
+    left: 42%;
+    
+    background-color: rgba(0, 0, 0);
+    border: none;
+    color: rgb(255, 0, 0);
+    padding: 12px 16px;
+    font-size: 16px;
+    cursor: pointer;
+    
+  }
+
+  .fa-caret-left {
+    position: absolute;
+    top: 87%;
+    left: 45%;
+    font-size: 6em !important;
+    border: none;
+    color: rgb(33, 32, 32);
+    cursor: pointer;
+  }
+
+  .fa-caret-right {
+    position: absolute;
+    top: 87%;
+    left: 55%;
+    font-size: 6em !important;
+    border: none;
+    color: rgb(33, 32, 32);
+    cursor: pointer;
+  }
+
+  #curtainLeft{
+    position: absolute;
+    top: -14px;
+    /* left: -510px; */
+    left: -1300px;
+    z-index: 3;
+  }
+
+
+  #curtainRight{
+    position: absolute;
+    top: -14px;
+    /* left: 730px; */
+    left: 1500px;
+    z-index: 3;
+  }
