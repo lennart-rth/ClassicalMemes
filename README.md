@@ -2,10 +2,11 @@
 
 Place yourself on top of classical Masterpieces!
 
-Written in plain js without any libary! Why? Because Why not!
+Written in plain js without any libary! Why? Don`t ask...
 
-1. Anchor scale setting.
-2. smooth transitions between images.
-3. auto color grading.
-5. export to image.
+# Examples
+![](examples/antoinette_example.png)
+![](examples/franklin_example.png)
+![](examples/bach_example.png)
+![](examples/tesla_example.png)
 
