@@ -97,7 +97,6 @@ input[type="range"]::-moz-range-track {
     cursor: w-resize;
 }
 
-
 #leftArrow {
     position: absolute;
     transform: scale(0.23);
@@ -125,7 +124,6 @@ input[type="range"]::-moz-range-track {
 #curtainLeft {
     position: absolute;
     top: -14px;
-    /* left: -510px; */
     left: -1300px;
     z-index: 4;
 }
@@ -134,7 +132,6 @@ input[type="range"]::-moz-range-track {
 #curtainRight {
     position: absolute;
     top: -14px;
-    /* left: 730px; */
     left: 1500px;
     z-index: 4;
 }
