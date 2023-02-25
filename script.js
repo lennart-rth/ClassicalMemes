@@ -174,9 +174,9 @@ async function changePaintingLeft() {
   if (paintingsIndex > 0) {
     paintingsIndex -= 1
     closeCurtain();
-    await Sleep(1050);
+    await Sleep(1000);
     backgroundImage.style.backgroundImage = `url(images/${paintings[paintingsIndex]}), url(images/bach.jpg)`;
-    await Sleep(150);
+    await Sleep(250);
     openCurtain();
   }
 }
@@ -185,9 +185,9 @@ async function changePaintingRight() {
   if (paintingsIndex + 1 < paintings.length) {
     paintingsIndex += 1
     closeCurtain();
-    await Sleep(1050);
+    await Sleep(1000);
     backgroundImage.style.backgroundImage = `url(images/${paintings[paintingsIndex]}), url(images/bach.jpg)`;
-    await Sleep(150);
+    await Sleep(250);
     openCurtain();
   }
 }
