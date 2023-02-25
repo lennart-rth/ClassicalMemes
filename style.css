@@ -97,25 +97,12 @@ input[type="range"]::-moz-range-track {
     cursor: w-resize;
 }
 
-/* .navigation {
+
+#leftArrow {
     position: absolute;
-    top: 92%;
-    left: 42%;
-
-    background-color: rgba(0, 0, 0);
-    border: none;
-    color: rgb(255, 0, 0);
-    padding: 12px 16px;
-    font-size: 16px;
-    cursor: pointer;
-    z-index: 3;
-
-} */
-
-.fa-caret-left {
-    position: absolute;
-    top: 87%;
-    left: 45%;
+    transform: scale(0.23);
+    top: 74%;
+    left: 39%;
     font-size: 6em !important;
     border: none;
     color: rgb(33, 32, 32);
@@ -123,10 +110,11 @@ input[type="range"]::-moz-range-track {
     z-index: 3;
 }
 
-.fa-caret-right {
+#rightArrow {
     position: absolute;
-    top: 87%;
-    left: 55%;
+    transform: scale(0.23);
+    top: 74%;
+    left: 49%;
     font-size: 6em !important;
     border: none;
     color: rgb(33, 32, 32);
